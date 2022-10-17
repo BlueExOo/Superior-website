@@ -17,7 +17,6 @@ function App() {
       <Features />
       <ScreenShots />
       <Team />
-      <Devices />
       <Footer />
     </div>
   );

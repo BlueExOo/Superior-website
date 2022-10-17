@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const html = document.querySelector("html");
   html.addEventListener("click", (e) => setIsNavOpen(false));
-  const links = ["home", "features", "screenshots", "core team", "devices"];
+  const links = ["home", "features", "screenshots", "core team"];
 
   return (
     <Nav state={isNavOpen ? 1 : 0}>
@@ -82,9 +82,9 @@ const Nav = styled.nav`
     padding: 1rem 2rem;
     z-index: 999;
     margin: 0;
-    button {
+    /* button {
       display: none;
-    }
+    } */
     .account-info {
       display: none;
     }

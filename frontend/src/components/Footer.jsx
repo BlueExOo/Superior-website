@@ -4,33 +4,51 @@ import styled from "styled-components";
 import logo from "../assets/logo.png";
 import { socialIcons } from "../utils";
 
+const DEVELOPERS = [
+  { name: "Maintainer", link: "mailto:superioros123@gmail.com" },
+  { name: "Gerrit", link: "https://review.superioros.org/q/status:open" },
+  { name: "Crowdin", link: "https://translations.superioros.org/" },
+];
+
 const Footer = () => {
   return (
     <Container>
-      <div className="wrapper">
-        <div className="inner-wrapper">
-          <div className="logo">
-            <img src={logo} alt="logo" />
-            <p>SuperiorOS</p>
-          </div>
+      <div className="footer-content">
+        <div className="logo">
+          <img src={logo} alt="logo" />
+          <h3>SuperiorOS</h3>
+        </div>
 
-          <div className="copy-right">
-            <p>
-              CopyRight &copy; 2022 {""}
-              <span>
-                <a href="https://github.com/SuperiorOS">SuperiorOS Project</a>
-              </span>
-            </p>
-          </div>
+        <div className="social-icons">
+          {socialIcons.map((icon, index) => {
+            return (
+              <div className="icon" key={index}>
+                <a href={icon.link}>{icon.name}</a>
+              </div>
+            );
+          })}
+        </div>
 
-          <div className="social-icons">
-            {socialIcons.map((icon, index) => {
-              return (
-                <div className="icon" key={index}>
-                  <a href={icon.link}>{icon.name}</a>
-                </div>
-              );
-            })}
+        <div className="footer-bottom">
+          <p>
+            CopyRight &copy;2022 {""}
+            <span>
+              <a href="https://github.com/SuperiorOS">SuperiorOS Project</a>
+            </span>
+          </p>
+
+          <div className="footer-menu">
+            <ul className="f-menu">
+              {DEVELOPERS.map(({ name, link }, index) => {
+                return (
+                  <li key={index}>
+                    <a href={link} target="_blank" rel="noreferrer">
+                      {name}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </div>
@@ -39,117 +57,131 @@ const Footer = () => {
 };
 
 const Container = styled.footer`
+  background: var(--primary-background_color);
+  height: auto;
   width: 100%;
+  padding-top: 20px;
+  border-radius: 15px;
 
-  .wrapper {
-    padding-top: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-    padding-left: 0;
+  .footer-content {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    gap: 1em;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 
-    .inner-wrapper {
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70px;
+      height: auto;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      h3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--primary-color);
+        margin-left: -10px;
+        font-size: 2.1rem;
+        font-weight: 500;
+        text-transform: capitalize;
+        line-height: 3rem;
+      }
+    }
+
+    .social-icons {
       flex-direction: row;
       display: flex;
-      justify-content: space-between;
+      gap: 1em;
       align-items: center;
-      width: 100%;
+      padding-top: 0.7em;
+      padding-right: 1em;
+      padding-bottom: 0.7em;
+      padding-left: 1em;
+      background-color: #fce9e9;
+      border-radius: 50px;
+      margin-bottom: 0.7rem;
+
+      svg {
+        color: var(--primary-color);
+        width: 20px;
+        height: 20px;
+      }
+
+      a {
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        text-decoration: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .footer-bottom {
       background: var(--primary-color);
       background: linear-gradient(
         to right,
         var(--primary-background_color),
         var(--primary-color)
       );
-      padding-top: 1em;
-      padding-right: 1em;
-      padding-bottom: 1em;
-      padding-left: 1.5em;
-      border-top-left-radius: 25px;
-      border-top-right-radius: 25px;
+      width: 100%;
+      padding: 20px;
+      padding-bottom: 15px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-      .logo {
-        display: flex;
-        width: 70px;
-        height: auto;
-
-        img {
-          width: 100%;
-          height: auto;
-        }
-
-        p {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 1.4rem;
-          color: var(--primary-color);
-          margin-left: -10px;
-        }
-      }
-
-      .copy-right {
-        text-align: left;
-        font-size: 1.1rem;
+      p {
+        font-size: 14px;
+        word-spacing: 2px;
+        text-transform: capitalize;
         color: white;
 
-        a {
-          text-decoration: none;
-          color: var(--secondary-color);
+        span {
+          text-transform: uppercase;
+          opacity: 0.4;
+          font-weight: 200;
+
+          a {
+            color: var(--primary-color);
+            font-size: 16px;
+            text-decoration: none;
+          }
         }
       }
 
-      .social-icons {
-        flex-direction: row;
-        display: flex;
-        gap: 1em;
-        align-items: center;
-        padding-top: 0.7em;
-        padding-right: 1em;
-        padding-bottom: 0.7em;
-        padding-left: 1em;
-        background-color: #fce9e9;
-        border-radius: 50px;
-
-        svg {
-          color: var(--primary-color);
-          width: 20px;
-          height: 20px;
-        }
-
-        a {
+      .footer-menu {
+        ul {
           display: flex;
-          flex-wrap: wrap;
-          text-align: center;
-          text-decoration: none;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
+
+          li {
+            padding-right: 10px;
+            display: block;
+
+            a {
+              color: white;
+              text-decoration: none;
+            }
+          }
         }
       }
     }
   }
   @media screen and (min-width: 280px) and (max-width: 1080px) {
-    .wrapper {
-      display: flex;
+    .footer-bottom {
       flex-direction: column;
-
-      .inner-wrapper {
-        text-align: justify;
-        flex-direction: column;
-        display: flex;
-        padding-top: 2em;
-        padding-right: 2em;
-        padding-bottom: 2em;
-        padding-left: 2em;
-        gap: 1em;
-
-        .logo {
-          justify-content: center;
-        }
+      .footer-menu {
+        margin-top: 10px;
+        padding-bottom: 20px;
       }
     }
   }

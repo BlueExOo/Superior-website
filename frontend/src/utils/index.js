@@ -20,11 +20,14 @@ import screenShots_14 from "../assets/Screenshot_14.jpg";
 import screenShots_15 from "../assets/Screenshot_15.jpg";
 
 import team_1 from "../assets/team-1.jpg";
+import team_2 from "../assets/team-2.jpg";
 import team_3 from "../assets/team-3.jpg";
-import team_4 from "../assets/team-4.jpg";
+import team_4 from "../assets/team-4.png";
+import team_5 from "../assets/team-5.jpg";
 
-import { FiGithub, FiTwitter } from "react-icons/fi";
-import { TbBrandTelegram } from "react-icons/tb";
+import { TbBrandGithub, TbBrandTelegram } from "react-icons/tb";
+
+import { FaGithub, FaTelegram } from "react-icons/fa";
 
 export const featuresData = [
   {
@@ -68,14 +71,55 @@ export const sliderData = [
   { image: screenShots_15 },
 ];
 
-export const teamImg = {
-  team_1,
-  team_3,
-  team_4,
-};
+export const teamData = [
+  {
+    image: team_1,
+    name: "Sipun Ku Mahanta",
+    title: "Founder & Developer",
+    socialIcons: [
+      { link: "https://github.com/Darkstar085", icon: <FaGithub /> },
+      { link: "t.me/Darkstar085", icon: <FaTelegram /> },
+    ],
+  },
+  {
+    image: team_2,
+    name: "Jayant Deshmukh",
+    title: "Lead Developer",
+    socialIcons: [
+      { link: "https://github.com/Jayant-Deshmukh", icon: <FaGithub /> },
+      { link: "https://t.me/JD1811", icon: <FaTelegram /> },
+    ],
+  },
+  {
+    image: team_3,
+    name: "Nipin NA",
+    title: "Developer",
+    socialIcons: [
+      { link: "https://github.com/Joker-V2", icon: <FaGithub /> },
+      { link: "https://t.me/Joker_V2_0", icon: <FaTelegram /> },
+    ],
+  },
+  {
+    image: team_4,
+    name: "Ahmed",
+    title: "Web Developer",
+    socialIcons: [
+      { link: "https://github.com/BlueExOo", icon: <FaGithub /> },
+      { link: "https://t.me/BlueExOo", icon: <FaTelegram /> },
+    ],
+  },
+  {
+    image: team_5,
+    name: "Adnan Faysal",
+    title: "Graphics Designer",
+    socialIcons: [
+      { link: "https://github.com/adnanfays", icon: <FaGithub /> },
+      { link: "https://t.me/adnan_fays", icon: <FaTelegram /> },
+    ],
+  },
+];
 
 export const socialIcons = [
-  { name: <FiGithub />, link: "https://github.com/SuperiorOS" },
+  { name: <TbBrandGithub />, link: "https://github.com/SuperiorOS" },
   { name: <TbBrandTelegram />, link: "https://t.me/superioros" },
-  { name: <FiTwitter />, link: "#" },
 ];

@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Pagination } from "swiper";
-import { FaGithub, FaTelegram, FaTwitter } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { teamImg } from "../utils";
+import { teamData } from "../utils";
 
 // Import Swiper styles
 import "swiper/css";
@@ -41,93 +40,26 @@ const Team = () => {
         grabCursor={true}
         className="container team-container"
       >
-        <SwiperSlide className="card">
-          <div className="image-content">
-            <img src={teamImg.team_1} alt="" />
-          </div>
-          <h2>Sipun Ku Mahanta</h2>
-          <p>Founder & Developer</p>
-          <span className="team-social">
-            <a
-              href="https://github.com/Darkstar085"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaGithub />
-            </a>
-            <a href="t.me/Darkstar085" target="_blank" rel="noreferrer">
-              <FaTelegram />
-            </a>
-            <a href="" target="_blank" rel="noreferrer">
-              <FaTwitter />
-            </a>
-          </span>
-        </SwiperSlide>
-
-        <SwiperSlide className="card">
-          <div className="image-content">
-            <img src="https://picsum.photos/id/26/100/100" alt="" />
-          </div>
-          <h2>Jayant Deshmukh</h2>
-          <p>Lead Developer</p>
-          <span className="team-social">
-            <a href="#" target="_blank" rel="noreferrer">
-              <FaGithub />
-            </a>
-            <a href="#" target="_blank" rel="noreferrer">
-              <FaTelegram />
-            </a>
-            <a href="#" target="_blank" rel="noreferrer">
-              <FaTwitter />
-            </a>
-          </span>
-        </SwiperSlide>
-
-        <SwiperSlide className="card">
-          <div className="image-content">
-            <img src={teamImg.team_3} alt="" />
-          </div>
-          <h2>Nipin NA</h2>
-          <p>Developer</p>
-          <span className="team-social">
-            <a
-              href="https://github.com/Joker-V2"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaGithub />
-            </a>
-            <a href="https://t.me/Joker_V2_0" target="_blank" rel="noreferrer">
-              <FaTelegram />
-            </a>
-            <a href="" target="_blank" rel="noreferrer">
-              <FaTwitter />
-            </a>
-          </span>
-        </SwiperSlide>
-
-        <SwiperSlide className="card">
-          <div className="image-content">
-            <img src={teamImg.team_4} alt="" />
-          </div>
-          <h2>Ahmed</h2>
-          <p>Web Developer</p>
-          <span className="team-social">
-            <a
-              href="https://github.com/BlueExOo"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaGithub />
-            </a>
-            <a href="https://t.me/BlueExOo" target="_blank" rel="noreferrer">
-              <FaTelegram />
-            </a>
-            <a href="" target="_blank" rel="noreferrer">
-              <FaTwitter />
-            </a>
-          </span>
-        </SwiperSlide>
+        {teamData.map(({ image, name, title, socialIcons }, index) => {
+          return (
+            <SwiperSlide className="card" key={index}>
+              <div className="image-content">
+                <img src={image} alt="" />
+              </div>
+              <h2>{name}</h2>
+              <p>{title}</p>
+              <span className="team-social">
+                {socialIcons.map((icon, index) => {
+                  return (
+                    <span key={index}>
+                      <a href={icon.link}>{icon.icon}</a>
+                    </span>
+                  );
+                })}
+              </span>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </Section>
   );

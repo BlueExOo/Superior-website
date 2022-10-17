@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import styled from "styled-components";
 import Hero from "../assets/hero.png";
 
 const Home = () => {
+  const [hidden, setHidden] = useState(true);
+
   return (
     <Section id="home">
       <Navbar />
@@ -16,43 +18,48 @@ const Home = () => {
             features. The main aim of this ROM is to deliver lightning fast
             experience with stability, security and good battery backup
           </p>
-          <div className="payment">
-            <div className="payment-donate">
-              <h2>Paypal</h2>
-              <h5>
-                <a
-                  href="https://www.paypal.com/paypalme/Sipun"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Donate
-                </a>
-              </h5>
-            </div>
-            <div className="payment-donate">
-              <h2>UPI</h2>
-              <h5>
-                <a
-                  href="https://telegra.ph/UPI-Id-09-18"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Donate
-                </a>
-              </h5>
-            </div>
-            <div className="payment-donate">
-              <h2>PayTm</h2>
-              <h5>
-                <a
-                  href="https://ibb.co/FgqkqLF"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Donate
-                </a>
-              </h5>
-            </div>
+          <div>
+            <button onClick={() => setHidden((s) => !s)} className="btn-donate">
+              Donate
+            </button>
+
+            {!hidden ? (
+              <div className="payment">
+                <div className="payment-donate">
+                  <h2>
+                    <a
+                      href="https://www.paypal.com/paypalme/Sipun"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Paypal
+                    </a>
+                  </h2>
+                </div>
+                <div className="payment-donate">
+                  <h2>
+                    <a
+                      href="https://telegra.ph/UPI-Id-09-18"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      UPI
+                    </a>
+                  </h2>
+                </div>
+                <div className="payment-donate">
+                  <h2>
+                    <a
+                      href="https://ibb.co/FgqkqLF"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      PayTm
+                    </a>
+                  </h2>
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
         <div className="img">
@@ -105,21 +112,31 @@ const Section = styled.section`
         font-size: 1.5rem;
       }
     }
+    .btn-donate {
+      border: none;
+      outline: none;
+      padding: 10px 16px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
     .payment {
       display: flex;
       gap: 5rem;
+      margin-top: 3%;
+
       .payment-donate {
         display: flex;
         flex-direction: column;
         gap: 1rem;
         h2 {
           font-size: 2rem;
-          color: white;
-        }
-        h5 {
-          text-align: center;
+
           a {
-            color: #a6a6a6;
+            color: white;
             text-decoration: none;
           }
         }
